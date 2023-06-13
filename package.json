@@ -1,0 +1,27 @@
+{
+  "name": "dex-listing-finder",
+  "version": "0.0.1",
+  "description": "Decentralized Exchange token listings finder",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "jest --watch",
+    "test:coverage": "jest --forceExit --coverage --verbose",
+    "clean": "rm -rf ./dist",
+    "build": "tsc",
+    "dev": "nodemon",
+    "start": "pnpm run build && node ./dist/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^18.8.3",
+    "jest": "^29.1.2",
+    "nodemon": "^2.0.19",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.3"
+  }
+}
