@@ -6,7 +6,7 @@
   "watch": ["src"],
   "ext": "ts,json",
   "ignore": ["src/**/*.tests.ts", "__tests__/"],
-  "exec": "ts-node ./src/index.ts",
+  "exec": "ts-node ./src/main.ts",
   "verbose": true,
   "delay": 2500
 }
