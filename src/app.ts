@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { ENV } from './utils/config';
 // import { sendTelegramMessage } from './utils';
 
 interface MinLiquidity {
@@ -34,10 +35,10 @@ export async function processNewListings({ minLiquidity }: MinLiquidity) {
 
   try {
     const latestListings = await axios.get(
-      process.env.COINMARKETCAP_LASTEST_LISTINGS_URL,
+      ENV.COINMARKETCAP_LASTEST_LISTINGS_URL,
       {
         headers: {
-          'X-CMC_PRO_API_KEY': process.env.COINMARKETCAP_APIKEY,
+          'X-CMC_PRO_API_KEY': ENV.COINMARKETCAP_API_KEY,
           Accept: 'application/json',
           'Accept-Encoding': 'deflate, gzip',
         },
@@ -55,7 +56,6 @@ export async function processNewListings({ minLiquidity }: MinLiquidity) {
       }
     });
 
-
     const tokenIdArr = [];
     const tokenInfoRequest = filteredTokens.slice(0, 5).map(async (token) => {
       tokenIdArr.push(token.id);
@@ -64,7 +64,7 @@ export async function processNewListings({ minLiquidity }: MinLiquidity) {
         `https://pro-api.coinmarketcap.com/v2/cryptocurrency/info?id=${token.id}`,
         {
           headers: {
-            'X-CMC_PRO_API_KEY': process.env.COINMARKETCAP_APIKEY,
+            'X-CMC_PRO_API_KEY': ENV.COINMARKETCAP_API_KEY,
             Accept: 'application/json',
             'Accept-Encoding': 'deflate, gzip',
           },

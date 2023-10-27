@@ -1,4 +1,5 @@
 import { Telegraf } from 'telegraf';
+import { ENV } from './config';
 
 interface TelegramReponse {
   data: Record<string, any>;
@@ -6,7 +7,7 @@ interface TelegramReponse {
 }
 
 export async function sendTelegramMessage(msg: string) {
-  const bot = new Telegraf(process.env.TELEGRAM_BOT_TOKEN);
+  const bot = new Telegraf(ENV.TELEGRAM_BOT_TOKEN);
 
   try {
     bot.command('start', (ctx) => {
